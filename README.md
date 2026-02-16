@@ -61,6 +61,7 @@ The full analysis covers:
 ```
 .
 ├── CLAUDE.md                # Framework instructions (read automatically by Claude Code)
+├── LICENSE
 ├── README.md                # This file
 ├── templates/
 │   └── report.typ           # Typst report template
