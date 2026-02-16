@@ -60,13 +60,15 @@ The full analysis covers:
 
 ```
 .
+├── .gitignore               # Excludes generated .typ and .pdf files
 ├── CLAUDE.md                # Framework instructions (read automatically by Claude Code)
 ├── LICENSE
 ├── README.md                # This file
-├── templates/
-│   └── report.typ           # Typst report template
-└── *.typ                    # Generated reports (e.g., AAPL_2026-02-15.typ)
+└── templates/
+    └── report.typ           # Typst report template
 ```
+
+Generated reports (e.g., `AAPL_2026-02-15.typ` and compiled PDFs) are written to the top-level directory but gitignored.
 
 ## Output
 
