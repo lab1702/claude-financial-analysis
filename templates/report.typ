@@ -65,7 +65,7 @@
 // Advance the heading counter so numbered sections start at 2,
 // matching the methodology (Executive Summary = Section 1 but
 // rendered above as an unnumbered callout block).
-#counter(heading).update(0)
+#counter(heading).update(1)
 
 = Current Price & Recent Price Action
 // Content as paragraphs, lists, and tables.
