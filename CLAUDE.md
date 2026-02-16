@@ -194,6 +194,7 @@ After the analysis is complete, write a professionally formatted Typst file to d
 - Maintain `heading(numbering: "1.1")` so sub-sections render as 5.1, 5.2, etc.
 - Keep body text at 10pt; use 8pt for disclaimers and headers
 - Set `{Report Type}` in the header and title to match the asset class: "Equity Research" for stocks, "ETF Research" for ETFs, "Crypto Research" or "Commodity Research" as appropriate
+- Escape `<` as `\<` in body text — bare `<` is label syntax in Typst and will cause compilation errors (e.g., write `\<1%`, `\<0.5x`)
 - After writing the file, inform the user of the file path
 
 ---
