@@ -195,7 +195,8 @@ After the analysis is complete, write a professionally formatted Typst file to d
 - Keep body text at 10pt; use 8pt for disclaimers and headers
 - Set `{Report Type}` in the header and title to match the asset class: "Equity Research" for stocks, "ETF Research" for ETFs, "Crypto Research" or "Commodity Research" as appropriate
 - Escape `<` as `\<` in body text — bare `<` is label syntax in Typst and will cause compilation errors (e.g., write `\<1%`, `\<0.5x`)
-- Escape `$` as `\$` in body text — bare `$` opens math mode in Typst and will cause "unclosed delimiter" compilation errors. This applies everywhere, including inside `block()` and `grid()` content (e.g., write `\$2.3B`, `\>\$10`)
+- Escape `$` as `\$` in body text — bare `$` opens math mode in Typst and will cause "unclosed delimiter" compilation errors. This applies everywhere, including inside `table()` cells, `block()`, and `grid()` content (e.g., write `[\$2.3B]`, `[\$0.07]`). This is especially easy to miss for dollar-denominated EPS values in table rows.
+- Do not use `_` for emphasis inside content brackets that are arguments to a function call (e.g., table cells). Use `#emph[...]` instead — bare `_` in that context causes "unexpected underscore" errors (e.g., write `[#emph[Pending]]` not `[_Pending_]`)
 - After writing the file, inform the user of the file path
 
 ---
