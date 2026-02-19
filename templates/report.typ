@@ -105,18 +105,9 @@
 = Technical Snapshot
 // Key MAs, RSI, support/resistance, volume trends.
 
-== Relative Strength & Performance Context
-// Performance vs SPY and sector ETF across timeframes.
-#figure(
-  table(
-    columns: 5,
-    align: (left, center, center, center, center),
-    stroke: 0.5pt + luma(200),
-    table.header[*Timeframe*][*{SYMBOL}*][*SPY*][*{Sector ETF}*][*vs. SPY*],
-    // ...rows for 1W, 1M, 3M, YTD...
-  ),
-  caption: [Relative Performance],
-)
+== Relative Strength (Brief)
+// Brief note on whether the stock is leading or lagging sector/market.
+// Full relative-performance table is in Section 16 (Relative Strength Dashboard).
 
 == Seasonality & Historical Patterns
 // Calendar-month tendencies, pre/post-earnings drift, seasonal drivers.
@@ -157,7 +148,7 @@
 // Short interest, days to cover, squeeze potential.
 
 = Options Activity
-// Put/call ratio, unusual flow, IV vs HV.
+// Put/call ratio, unusual flow, IV vs HV, max pain, GEX, IV term structure.
 
 = Insider & Institutional Activity
 // Insider buys/sells, 13F changes, activist involvement.
@@ -244,6 +235,7 @@
 // Disclaimer & Sources
 // ============================================================
 
+#pagebreak(weak: true)
 #v(12pt)
 #line(length: 100%, stroke: 0.5pt + luma(200))
 #v(4pt)
