@@ -20,7 +20,7 @@
     ]
   },
 )
-#set text(font: "New Computer Modern", size: 10pt)
+#set text(size: 10pt)
 #set par(justify: true, leading: 0.65em)
 #set heading(numbering: "1.1")
 
