@@ -2,21 +2,24 @@
 
 ## Stock Analysis Framework
 
-*Last updated: 2026-02-15 | Version 3.0*
+*Last updated: 2026-02-19 | Version 4.0*
 
 ---
 
 ## When to Use This Framework
 
 - **Full analysis** — Run all sections when the user asks for "analysis," "research," "deep dive," "report," or similar. This is the default for any open-ended request like "look into $SYM for me."
-- **Quick take** — If the user asks for a "quick take," "summary," or "what's happening with $SYM," provide only Sections 1, 2, 3, and 14 (Executive Summary, Price Action, Technical Snapshot, Near-Term Outlook). Skip the Typst report unless explicitly requested.
+- **Quick take** — If the user asks for a "quick take," "summary," or "what's happening with $SYM," provide only Sections 1, 2, 3, 14, and 15 (Executive Summary, Price Action, Technical Snapshot, Near-Term Outlook, Trade Setup). Skip the Typst report unless explicitly requested.
 - **Simple price check** — If the user asks "what's $SYM at?" or "price of $SYM," just look up and report the current price. Do not run the framework.
+- **Comparative analysis** — When the user asks to compare two or more symbols (e.g., "compare AAPL vs MSFT," "$SYM1 or $SYM2?"), run the comparative mode described in its own section below.
+- **Follow-up analysis** — When a report already exists for the same symbol (any prior date), automatically engage the delta-analysis workflow described below.
 
 ## Analysis Depth
 
 - **Default depth:** ~2,000-3,000 words in chat output. Cover every section with enough detail to be actionable.
 - **Deep dive:** If the user requests extra depth, expand to ~4,000-5,000 words, adding more granular data and longer commentary per section.
 - **Quick take:** ~500-800 words covering only the abbreviated section set above.
+- **Comparative analysis:** ~3,000-4,000 words total (not per symbol). Focus on the unified comparison rather than repeating full standalone analyses.
 
 ## Asset-Class Adaptations
 
@@ -36,6 +39,8 @@ Not every section carries equal weight for every stock. Adjust depth accordingly
 - **Income / dividend stocks:** Prioritize Sections 5 (Fundamentals), 7 (Dividends), and 6 (Valuation)
 - **Speculative / high-short-interest:** Prioritize Sections 8 (Short Interest), 9 (Options), and 12 (Sentiment)
 - **Distressed / turnaround:** Prioritize Sections 5 (Fundamentals — especially debt profile), 10 (Insider Activity), and 13 (Macro/Sector)
+- **Large-cap / blue-chip:** Prioritize Sections 6 (Valuation), 7 (Dividends), 13 (Macro/Sector), and 16 (Relative Strength)
+- **Small-cap / low-coverage:** Prioritize Sections 5 (Fundamentals), 8 (Short Interest), 17 (Liquidity), and 18 (Data Quality — gaps are expected)
 
 ---
 
@@ -48,7 +53,12 @@ Open with a 2-3 sentence **TL;DR** capturing:
 - The single most important thing an investor should know right now
 - Overall sentiment (bullish / bearish / neutral)
 
-> **Ordering note:** Populate this section only after completing Sections 2-14. It appears first in the output but is written last. Section 15 (Data Quality) is independent and can be written separately.
+Include a **Confidence** tag after the sentiment:
+- **High:** 12+ of the analysis sections fully populated, key data <7 days old, sources broadly agree
+- **Medium:** 9-11 sections populated, some data 7-30 days old, or minor source conflicts
+- **Low:** <9 sections populated, significant data gaps, stale data, or major source conflicts
+
+> **Ordering note:** Populate this section only after completing Sections 2-14. It appears first in the output but is written last. Section 18 (Data Quality) is independent and can be written separately.
 
 ### 2. Current Price & Recent Price Action
 
@@ -65,6 +75,16 @@ How the stock moved after each of the last 4 earnings reports (beat/miss and res
 - RSI (overbought/oversold)
 - Notable support and resistance levels
 - Recent volume trends relative to average
+
+#### Relative Strength & Performance Context
+- Performance vs. SPY and the most relevant sector ETF over 1-week, 1-month, 3-month, and YTD windows
+- Is the stock leading or lagging its sector? Outperforming or underperforming the broad market?
+- Note any notable divergences (e.g., stock falling while sector rallies, or vice versa)
+
+#### Seasonality & Historical Patterns
+- How the stock has typically performed in the current calendar month or quarter over the last 5 years (if a clear pattern exists)
+- Pre- and post-earnings drift tendencies (does it tend to run up before earnings? sell the news?)
+- Any known seasonal business drivers (e.g., retail in Q4, energy in winter heating season)
 
 ### 4. Upcoming Catalysts
 
@@ -86,11 +106,30 @@ How the stock moved after each of the last 4 earnings reports (beat/miss and res
 - Industry/sector headwinds
 - Legal, regulatory, or competitive risks
 
+#### Earnings Quality & Accounting Flags
+- GAAP vs. adjusted EPS spread — note if the gap is widening over time (yellow flag)
+- Cash flow from operations vs. net income — persistent divergence suggests accrual concerns
+- Revenue recognition approach (especially for SaaS, long-cycle contracts, or percentage-of-completion methods)
+- Any recent auditor changes, restatements, or SEC comment letters
+
+#### Revenue Concentration & Supply Chain
+- Top customer concentration (flag if any single customer is >15% of revenue)
+- Geographic revenue breakdown (domestic vs. international split, exposure to specific regions)
+- Key supplier or input dependencies (single-source components, commodity exposure)
+- If data is unavailable (common for companies that don't disclose), note the gap and move on
+
 #### Balance Sheet & Debt Profile
 - Debt-to-equity ratio, net debt position
 - Interest coverage ratio
 - Upcoming debt maturities or refinancing needs
 - Credit rating (if rated)
+
+#### Management & Governance
+- CEO tenure and notable track record
+- Recent C-suite or board turnover (last 12 months)
+- Executive compensation structure — is it aligned with shareholders? (stock-heavy vs. cash-heavy, performance-linked metrics)
+- Governance red flags: dual-class share structures, poison pills, related-party transactions, classified boards
+- If the company is founder-led, note this — it can be a positive (vision alignment) or negative (entrenchment)
 
 ### 6. Valuation & Peer Comparison
 
@@ -156,11 +195,95 @@ Provide three scenarios with probability weightings that sum to 100%:
 
 Flag the single biggest risk and the single biggest catalyst.
 
+### 15. Trade Setup
+
+Translate the analysis into actionable parameters. This section bridges the gap between research and execution.
+
+- **Directional bias:** Long / Short / Neutral (with conviction level: high / moderate / low)
+- **Entry zone:** A price range for initiating a position, anchored to a technical level or catalyst (e.g., "on a pullback to $142-145 support" or "on a breakout above $160 resistance")
+- **Stop-loss:** A specific level or percentage with rationale (technical support break, below key moving average, or max acceptable loss)
+- **Price targets:** Primary target and stretch target, derived from the bull/base scenarios in Section 14
+- **Risk/reward ratio:** Distance to primary target vs. distance to stop (express as X:1)
+- **Position sizing guidance:**
+  - *Full position* — High conviction, favorable risk/reward (>2:1), strong catalyst alignment
+  - *Half position* — Moderate conviction, acceptable risk/reward, or elevated volatility
+  - *Small / starter position* — Lower conviction, building a position into a catalyst, or wanting exposure while awaiting confirmation
+- **Timeframe:** How long the thesis needs to play out (days, weeks, 1-3 months)
+
+> **Disclaimer reminder:** Frame all trade setup language as informational analysis, not recommendations. The Typst report disclaimer already covers this, but avoid imperative language like "buy at $X" — prefer "the analysis suggests an entry zone near $X."
+
+### 16. Relative Strength Dashboard
+
+Present a compact table showing the stock's performance vs. benchmarks:
+
+| Timeframe | $SYM | SPY | Sector ETF | $SYM vs. SPY |
+|-----------|------|-----|------------|---------------|
+| 1 Week    |      |     |            | +/- bps       |
+| 1 Month   |      |     |            | +/- bps       |
+| 3 Months  |      |     |            | +/- bps       |
+| YTD       |      |     |            | +/- bps       |
+
+- Note whether the stock is in a relative uptrend or downtrend vs. the market
+- Identify any correlation shifts (e.g., "historically tracks oil prices, but has decoupled recently")
+
+### 17. Liquidity & Tradability
+
+- **Market cap tier:** Mega (>$200B) / Large ($10-200B) / Mid ($2-10B) / Small ($300M-2B) / Micro (<$300M)
+- **Average daily volume:** 30-day average shares and dollar volume
+- **Float:** Total shares outstanding, float, and float as a percentage of shares outstanding
+- **Bid-ask spread:** Note if the stock is thinly traded or has wide spreads (common in small/micro-caps)
+- **Options liquidity:** Whether options chains have tight spreads and sufficient open interest for practical trading (this directly affects the usefulness of Section 9)
+- If the stock is a mega- or large-cap with deep liquidity, keep this section brief — it mainly matters for mid-caps and below
+
+---
+
+## Comparative Analysis Mode
+
+When the user asks to compare two or more symbols, use this workflow instead of running separate full analyses.
+
+### Research Phase
+Run the standard search queries (see Search Queries section) for each symbol in parallel.
+
+### Output Structure
+
+1. **Overview Table** — Side-by-side snapshot of each symbol: price, market cap, sector, YTD performance, overall sentiment
+2. **Price Action & Technical Comparison** — Who has stronger momentum, better relative strength, more favorable chart setup?
+3. **Fundamental Comparison** — Unified table: revenue growth, EPS growth, margins, ROE, debt/equity for each symbol
+4. **Valuation Comparison** — Unified table: P/E, P/S, EV/EBITDA, PEG for each symbol, highlighting who trades at a premium/discount and whether it's justified
+5. **Catalysts & Risks** — Key upcoming catalyst and biggest risk for each symbol, side by side
+6. **Positioning & Sentiment** — Short interest, options activity, analyst consensus, social sentiment for each
+7. **Verdict** — Rank the symbols across five dimensions, then give an overall pick:
+   - **Growth:** Which has the better growth trajectory?
+   - **Value:** Which offers more attractive valuation?
+   - **Momentum:** Which has stronger technical momentum?
+   - **Risk:** Which has a more favorable risk profile?
+   - **Overall:** Synthesize into a recommendation with rationale
+
+### Typst Report for Comparisons
+- File naming: `{SYM1}_vs_{SYM2}_{YYYY-MM-DD}.typ` (for 3+ symbols: `{SYM1}_vs_{SYM2}_vs_{SYM3}_{YYYY-MM-DD}.typ`)
+- Use side-by-side `grid()` layouts where practical
+- All comparison tables should use `table()` with one column per symbol
+
+---
+
+## Follow-Up / Delta Analysis
+
+When generating a new report for a symbol that already has a prior report file in the working directory (any date):
+
+1. **Read the prior report** before starting research
+2. **Add a "What Changed" callout box** immediately after the Executive Summary in both chat output and Typst report:
+   - Price change since the last report (absolute and %)
+   - Key developments that occurred since the last report date
+   - Which prior scenarios played out (or didn't)
+   - Conviction change: **Higher** / **Lower** / **Unchanged**, with a one-sentence rationale
+3. **Flag thesis-altering developments** — If something materially changed the investment thesis (earnings surprise, acquisition, regulatory action), call it out prominently
+4. In Section 18 (Data Quality), note which sections had meaningful changes vs. the prior report and which remained largely the same
+
 ---
 
 ## Part B: Quality Standards
 
-### 15. Data Quality & Confidence
+### 18. Data Quality & Confidence
 
 - Flag any data points older than 30 days
 - Note where sources conflict and which source is preferred
@@ -190,6 +313,7 @@ After the analysis is complete, write a professionally formatted Typst file to d
 - Use `table()` for all financial comparisons (valuation, peers, earnings history)
 - Use `block()` with fill colors for callout boxes (executive summary, risk/catalyst, scenarios)
 - Use `sentiment-badge()` on the cover for overall sentiment
+- Use `sentiment-badge()` a second time on the cover for the confidence level: green for High, orange for Medium, red for Low (e.g., `#sentiment-badge("Confidence: High", green)`)
 - Use `figure()` with captions for all tables
 - Maintain `heading(numbering: "1.1")` so sub-sections render as 5.1, 5.2, etc.
 - Keep body text at 10pt; use 8pt for disclaimers and headers
@@ -199,13 +323,19 @@ After the analysis is complete, write a professionally formatted Typst file to d
 - Do not use `_` for emphasis inside content brackets that are arguments to a function call (e.g., table cells). Use `#emph[...]` instead — bare `_` in that context causes "unexpected underscore" errors (e.g., write `[#emph[Pending]]` not `[_Pending_]`)
 - After writing the file, inform the user of the file path
 
+**Post-write compilation check:** After writing the `.typ` file, run `typst compile {file}.typ` to verify it compiles without errors. If compilation fails:
+1. Read the error output to identify the failing line(s)
+2. Fix the Typst syntax in the `.typ` file (most common issues: unescaped `$`, `<`, or `_`)
+3. Re-compile and repeat until the build succeeds
+4. Report both the `.typ` and `.pdf` file paths to the user
+
 ---
 
 ## Search Queries
 
 For any symbol `$SYM`, run these queries in parallel. Queries are grouped by theme — if a group's first query returns comprehensive results, the second query can be skipped.
 
-**Fallback when queries return poor results:** If a query returns no useful data (common for small-caps, recent IPOs, or foreign-listed stocks), try one reformulated query using the company name instead of the ticker, or a broader industry term. If that also fails, note the gap in Section 15 (Data Quality) and move on — do not repeatedly retry the same query.
+**Fallback when queries return poor results:** If a query returns no useful data (common for small-caps, recent IPOs, or foreign-listed stocks), try one reformulated query using the company name instead of the ticker, or a broader industry term. If that also fails, note the gap in Section 18 (Data Quality) and move on — do not repeatedly retry the same query.
 
 **Price & news** *(feeds Sections 2, 4)*
 1. `"$SYM stock price today [current month year]"`
@@ -236,3 +366,14 @@ For any symbol `$SYM`, run these queries in parallel. Queries are grouped by the
 
 **Macro/sector** *(feeds Section 13)*
 14. `"$SYM [sector] market outlook [year]"`
+
+**Relative performance & liquidity** *(feeds Sections 16, 17)*
+15. `"$SYM vs SPY vs [sector ETF] performance [current month year]"`
+16. `"$SYM average volume market cap float shares outstanding"`
+
+**Management & governance** *(feeds Section 5 — Management & Governance)*
+17. `"$SYM CEO management executive changes [year]"`
+18. `"$SYM [company name] corporate governance insider compensation"`
+
+**Seasonality** *(feeds Section 3 — Seasonality & Historical Patterns)*
+19. `"$SYM stock seasonality monthly performance historical pattern"`

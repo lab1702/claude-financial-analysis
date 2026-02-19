@@ -41,6 +41,9 @@
   // Use sentiment-badge with the appropriate color:
   //   green for Bullish, red for Bearish, orange for Neutral
   #sentiment-badge("{Bullish/Bearish/Neutral}", {green/red/orange})
+  #h(6pt)
+  // Confidence badge: green for High, orange for Medium, red for Low
+  #sentiment-badge("Confidence: {High/Medium/Low}", {green/orange/red})
   #v(6pt)
   #line(length: 60%, stroke: 0.5pt + luma(200))
 ]
@@ -58,6 +61,23 @@
   {2-3 sentence TL;DR here}
 ]
 #v(8pt)
+
+// — "What Changed" box (include ONLY for follow-up analyses) —
+// Uncomment and populate if this is a follow-up to a prior report.
+// #block(
+//   fill: rgb("#e8f0fe"),
+//   inset: 12pt,
+//   radius: 4pt,
+//   width: 100%,
+// )[
+//   #text(weight: "bold", size: 11pt)[What Changed Since {Prior Date}]
+//   #v(4pt)
+//   - *Price:* {prior price} → {current price} ({+/- %})\
+//   - *Key developments:* {summary}\
+//   - *Prior scenarios:* {which played out}\
+//   - *Conviction:* {Higher/Lower/Unchanged} — {rationale}
+// ]
+// #v(8pt)
 
 // ============================================================
 // Analysis Sections
@@ -85,6 +105,22 @@
 = Technical Snapshot
 // Key MAs, RSI, support/resistance, volume trends.
 
+== Relative Strength & Performance Context
+// Performance vs SPY and sector ETF across timeframes.
+#figure(
+  table(
+    columns: 5,
+    align: (left, center, center, center, center),
+    stroke: 0.5pt + luma(200),
+    table.header[*Timeframe*][*{SYMBOL}*][*SPY*][*{Sector ETF}*][*vs. SPY*],
+    // ...rows for 1W, 1M, 3M, YTD...
+  ),
+  caption: [Relative Performance],
+)
+
+== Seasonality & Historical Patterns
+// Calendar-month tendencies, pre/post-earnings drift, seasonal drivers.
+
 = Upcoming Catalysts
 // Earnings dates, product launches, conferences, regulatory decisions.
 
@@ -95,8 +131,17 @@
 == Negatives
 // Risks, headwinds, competitive threats.
 
+== Earnings Quality & Accounting Flags
+// GAAP vs adjusted EPS spread, CFO vs net income, revenue recognition, auditor changes.
+
+== Revenue Concentration & Supply Chain
+// Top customer %, geographic breakdown, supplier dependencies.
+
 == Balance Sheet & Debt Profile
 // D/E, net debt, interest coverage, maturities, credit rating.
+
+== Management & Governance
+// CEO tenure, C-suite turnover, compensation alignment, governance flags.
 
 = Valuation & Peer Comparison
 == Valuation Multiples
@@ -156,6 +201,41 @@
   #text(weight: "bold")[Biggest Risk:] {risk} \
   #text(weight: "bold")[Biggest Catalyst:] {catalyst}
 ]
+
+= Trade Setup
+
+// Trade setup callout box
+#block(
+  fill: blue.lighten(90%),
+  inset: 10pt,
+  radius: 4pt,
+  width: 100%,
+)[
+  #text(weight: "bold")[Directional Bias:] {Long/Short/Neutral} — {High/Moderate/Low} conviction \
+  #text(weight: "bold")[Entry Zone:] {price range} \
+  #text(weight: "bold")[Stop-Loss:] {level} ({rationale}) \
+  #text(weight: "bold")[Primary Target:] {target} #h(12pt) #text(weight: "bold")[Stretch Target:] {target} \
+  #text(weight: "bold")[Risk/Reward:] {X}:1 \
+  #text(weight: "bold")[Position Size:] {Full/Half/Starter} \
+  #text(weight: "bold")[Timeframe:] {days/weeks/months}
+]
+
+= Relative Strength Dashboard
+#figure(
+  table(
+    columns: 5,
+    align: (left, center, center, center, center),
+    stroke: 0.5pt + luma(200),
+    table.header[*Timeframe*][*{SYMBOL}*][*SPY*][*{Sector ETF}*][*vs. SPY*],
+    // ...rows for 1W, 1M, 3M, YTD...
+  ),
+  caption: [Relative Strength vs. Benchmarks],
+)
+// Relative trend commentary, correlation shifts.
+
+= Liquidity & Tradability
+// Market cap tier, avg daily volume, float, bid-ask, options liquidity.
+// Keep brief for large-caps; expand for mid/small/micro-caps.
 
 = Data Quality & Confidence
 // Flag stale data, conflicts, gaps.
