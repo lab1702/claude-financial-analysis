@@ -6,7 +6,7 @@ A structured stock analysis framework for Claude Code. Ask for analysis on any t
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed and configured
 - **Web search enabled** in Claude Code — the framework relies on live web searches for all data. Web search is currently available to US-based users.
-- [Typst](https://typst.app/) installed locally to compile `.typ` reports into PDFs (`typst compile AAPL_2026-02-15.typ`). The report template uses the [New Computer Modern](https://ctan.org/pkg/newcomputermodern) font — install it for intended styling, or Typst will substitute a fallback.
+- [Typst](https://typst.app/) installed locally to compile `.typ` reports into PDFs (`typst compile AAPL_2026-02-15.typ`).
 
 ## Quick Start
 
