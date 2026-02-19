@@ -26,8 +26,9 @@ The `CLAUDE.md` file contains the full framework instructions. Claude Code reads
 
 | What you say | What happens |
 |---|---|
-| "analyze TSLA", "deep dive on MSFT", "research NVDA" | Full 15-section analysis + Typst report |
-| "quick take on AMZN", "what's happening with META" | Abbreviated 4-section summary (no report) |
+| "analyze TSLA", "deep dive on MSFT", "research NVDA" | Full 18-section analysis + Typst report |
+| "quick take on AMZN", "what's happening with META" | Abbreviated 6-section summary (no report unless requested) |
+| "compare AAPL vs MSFT", "NVDA or AMD?" | Side-by-side comparative analysis + Typst report |
 | "what's GOOG at?" | Price lookup only |
 
 ### Analysis Sections
@@ -36,19 +37,22 @@ The full analysis covers:
 
 1. **Executive Summary** — TL;DR with sentiment (written last, appears first)
 2. **Current Price & Recent Price Action** — Current price, recent moves, earnings reaction history
-3. **Technical Snapshot** — Moving averages, RSI, support/resistance, volume
+3. **Technical Snapshot** — Moving averages, RSI, support/resistance, volume, relative strength, seasonality
 4. **Upcoming Catalysts** — Earnings dates, product launches, regulatory events
-5. **Fundamental Picture** — Positives, negatives, balance sheet & debt profile
+5. **Fundamental Picture** — Positives, negatives, earnings quality, revenue concentration, balance sheet, management & governance
 6. **Valuation & Peer Comparison** — Multiples vs. history and competitors (table)
 7. **Dividends & Capital Returns** — Yield, payout ratio, buybacks
 8. **Short Interest & Float Dynamics** — Short %, days to cover, squeeze potential
-9. **Options Activity** — Put/call ratio, unusual flow, IV vs. HV
+9. **Options Activity** — Put/call ratio, unusual flow, IV vs. HV, max pain, GEX
 10. **Insider & Institutional Activity** — Recent buys/sells, 13F changes
 11. **Analyst Consensus** — Ratings distribution, price target range
 12. **Online & Social Sentiment** — Reddit, StockTwits, X, news tone
 13. **Macro/Sector Context** — Rates, Fed policy, sector trends
 14. **Near-Term Outlook** — Bull/bear/base scenarios with probabilities
-15. **Data Quality & Confidence** — Flags stale data, source conflicts, gaps
+15. **Trade Setup** — Entry zone, stop-loss, targets, risk/reward, position sizing
+16. **Relative Strength Dashboard** — Performance vs. SPY and sector ETF across timeframes
+17. **Liquidity & Tradability** — Market cap tier, volume, float, bid-ask spread
+18. **Data Quality & Confidence** — Flags stale data, source conflicts, gaps
 
 ### Supported Asset Classes
 
@@ -85,12 +89,13 @@ typst compile AAPL_2026-02-15.typ
 ```
 
 Reports include:
-- Colored sentiment badge (bullish/bearish/neutral)
+- Colored sentiment badge (bullish/bearish/neutral) and confidence badge (high/medium/low)
 - Executive summary callout box
 - Numbered sections matching the chat analysis
-- Tables for earnings history, peer comparison, and valuation
+- Tables for earnings history, peer comparison, valuation, and relative strength
 - Bull/bear/base scenario grid with color coding
 - Risk/catalyst callout box
+- Trade setup box with entry, stop, targets, and position sizing
 - Disclaimer and numbered source list
 
 Re-running analysis for the same symbol on the same date overwrites the previous report.
