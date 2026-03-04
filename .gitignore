@@ -1,3 +1,5 @@
 # Generated reports
 /*.typ
-/*.pdf
+
+# PDF files
+*.pdf
