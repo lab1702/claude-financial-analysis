@@ -6,7 +6,7 @@ A structured stock analysis framework for Claude Code. Ask for analysis on any t
 
 - [Claude Code](https://docs.anthropic.com/en/docs/claude-code) CLI installed and configured
 - **Web search enabled** in Claude Code — the framework relies on live web searches for all data. Web search is currently available to US-based users.
-- [Typst](https://typst.app/) 0.12+ installed locally to compile `.typ` reports into PDFs (`typst compile AAPL_2026-02-15.typ`)
+- [Typst](https://typst.app/) 0.13+ installed locally to compile `.typ` reports into PDFs (`typst compile AAPL_2026-02-15.typ`)
 
 ## Quick Start
 
@@ -57,7 +57,7 @@ The full analysis covers:
 ### Supported Asset Classes
 
 - **Stocks** (US and international) — full framework
-- **ETFs** — adapted (skips insider activity, adds holdings/AUM/flows)
+- **ETFs** — adapted (skips options and insider activity unless heavily options-traded, adds holdings/AUM/flows)
 - **Crypto / Commodities** — adapted (skips equity-specific sections, adds on-chain or supply data)
 
 ## File Structure

@@ -43,6 +43,10 @@
   #sentiment-badge("{SYM1}: Bullish", green)
   #h(6pt)
   #sentiment-badge("{SYM2}: Bearish", red)
+  #h(6pt)
+  // Replace "Medium" and orange with actual confidence and color
+  // (green = High, orange = Medium, red = Low)
+  #sentiment-badge("Confidence: Medium", orange)
   #v(6pt)
   #line(length: 60%, stroke: 0.5pt + luma(200))
 ]
@@ -143,15 +147,15 @@
 #grid(
   columns: (1fr, 1fr),
   gutter: 12pt,
-  block(fill: green.lighten(90%), inset: 10pt, radius: 4pt)[
+  block(fill: luma(245), inset: 10pt, radius: 4pt)[
     #text(weight: "bold")[{SYM1}] \
-    #text(weight: "bold")[Key Catalyst:] {catalyst} \
-    #text(weight: "bold")[Biggest Risk:] {risk}
+    #text(weight: "bold")[Key Catalyst:] {CATALYST_DESCRIPTION} \
+    #text(weight: "bold")[Biggest Risk:] {RISK_DESCRIPTION}
   ],
-  block(fill: green.lighten(90%), inset: 10pt, radius: 4pt)[
+  block(fill: luma(245), inset: 10pt, radius: 4pt)[
     #text(weight: "bold")[{SYM2}] \
-    #text(weight: "bold")[Key Catalyst:] {catalyst} \
-    #text(weight: "bold")[Biggest Risk:] {risk}
+    #text(weight: "bold")[Key Catalyst:] {CATALYST_DESCRIPTION} \
+    #text(weight: "bold")[Biggest Risk:] {RISK_DESCRIPTION}
   ],
 )
 
@@ -226,8 +230,8 @@
   radius: 4pt,
   width: 100%,
 )[
-  #text(weight: "bold")[Overall Pick:] {SYM} \
-  {Rationale}
+  #text(weight: "bold")[Overall Pick:] {OVERALL_PICK} \
+  {RATIONALE}
 ]
 
 // ============================================================
@@ -248,7 +252,7 @@
 #v(4pt)
 #text(size: 8pt, fill: luma(120))[
   #emph[This is informational analysis only, not financial advice.
-  All data sourced from publicly available information as of {date}.
+  All data sourced from publicly available information as of {DATE}.
   Figures may be delayed or subject to revision.]
 ]
 

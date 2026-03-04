@@ -3,3 +3,6 @@
 
 # PDF files
 *.pdf
+
+# Planning and ephemeral docs
+docs/

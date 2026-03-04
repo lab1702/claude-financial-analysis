@@ -59,7 +59,8 @@
 )[
   #text(weight: "bold", size: 11pt)[Executive Summary]
   #v(4pt)
-  {2-3 sentence TL;DR here}
+  // 2-3 sentence TL;DR: price direction, key insight, sentiment
+  {EXECUTIVE_SUMMARY}
 ]
 #v(8pt)
 
@@ -265,7 +266,7 @@
 #v(4pt)
 #text(size: 8pt, fill: luma(120))[
   #emph[This is informational analysis only, not financial advice.
-  All data sourced from publicly available information as of {date}.
+  All data sourced from publicly available information as of {DATE}.
   Figures may be delayed or subject to revision.]
 ]
 
