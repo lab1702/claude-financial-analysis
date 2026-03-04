@@ -2,7 +2,7 @@
 
 ## Stock Analysis Framework
 
-*Last updated: 2026-02-19*
+*Last updated: 2026-03-03*
 
 ---
 
@@ -362,7 +362,12 @@ After the analysis is complete, write a professionally formatted Typst file to d
 1. Read the error output to identify the failing line(s)
 2. Fix the Typst syntax in the `.typ` file (most common issues: unescaped `$`, `<`, `_`, `#`, or `@`)
 3. Re-compile and repeat until the build succeeds
-4. Report both the `.typ` and `.pdf` file paths to the user
+4. After successful compilation, check for missed placeholder replacements:
+   ```
+   grep -n '{[A-Z_]*}' {file}.typ
+   ```
+   If any remain, they are missed replacements — fix them and recompile.
+5. Report both the `.typ` and `.pdf` file paths to the user
 
 ---
 

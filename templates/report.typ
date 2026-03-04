@@ -7,6 +7,32 @@
 //   for ETFs, "Crypto Research" / "Commodity Research" etc.
 // File naming: {SYMBOL}_{YYYY-MM-DD}.typ
 // ============================================================
+//
+// Placeholder tokens used in this template (verify all are
+// replaced before compiling):
+//   {SYMBOL}               — Ticker symbol (e.g., AAPL)
+//   {Company Name}         — Full company name
+//   {Report Type}          — Asset-class label for header/title
+//   {YYYY-MM-DD}           — Report date (ISO format, header)
+//   {Month Day, Year}      — Report date (long format, title)
+//   {DATE}                 — Report date (disclaimer)
+//   {EXECUTIVE_SUMMARY}    — Executive summary paragraph(s)
+//   {PROBABILITY}          — Scenario probability percentages
+//   {RISK_DESCRIPTION}     — Biggest risk description
+//   {CATALYST_DESCRIPTION} — Biggest catalyst description
+//   {DIRECTIONAL_BIAS}     — Long / Short / Neutral
+//   {CONVICTION_LEVEL}     — High / Moderate / Low
+//   {ENTRY_PRICE_RANGE}    — Entry zone price range
+//   {STOP_LEVEL}           — Stop-loss price level
+//   {STOP_RATIONALE}       — Rationale for stop placement
+//   {PRIMARY_TARGET}       — Primary price target
+//   {STRETCH_TARGET}       — Stretch price target
+//   {RATIO}                — Risk/reward ratio number
+//   {POSITION_SIZE}        — Position sizing guidance
+//   {TIMEFRAME}            — Trade timeframe
+//   {Sector ETF}           — Sector ETF ticker (e.g., XLK)
+//   {Prior Date}           — Date of prior report (delta only)
+// ============================================================
 
 // — Page, font & heading setup —
 #set page(
@@ -118,6 +144,37 @@
 // Earnings dates, product launches, conferences, regulatory decisions.
 
 // [ASSET-CLASS NOTE: Crypto/Commodities — skip this section. ETFs — add holdings, AUM, expense ratio, fund flows.]
+//
+// ---- ETF VARIANT (uncomment and replace Section 5 for ETFs) ----
+// = Holdings & Fund Overview
+// #figure(
+//   table(
+//     columns: 3,
+//     align: (left, center, center),
+//     stroke: 0.5pt + luma(200),
+//     table.header[*Holding*][*Weight*][*Sector*],
+//     // ...top 10 holdings rows...
+//   ),
+//   caption: [Top Holdings],
+// )
+// == Fund Metrics
+// - #strong[Expense Ratio:] {EXPENSE_RATIO}
+// - #strong[AUM:] {AUM}
+// - #strong[Fund Flows (30d):] {FUND_FLOWS}
+// - #strong[Tracking Error:] {TRACKING_ERROR}
+// ---- END ETF VARIANT ----
+//
+// ---- CRYPTO / COMMODITY VARIANT (uncomment and replace Sections 5-6 for crypto/commodities) ----
+// = Network & Supply Dynamics
+// - #strong[On-Chain Metrics:] {ON_CHAIN_SUMMARY}
+// - #strong[Supply Schedule:] {SUPPLY_SCHEDULE}
+// - #strong[Hash Rate / Network Stats:] {NETWORK_STATS}
+// = Market Structure
+// - #strong[Futures Open Interest:] {FUTURES_OI}
+// - #strong[Funding Rate:] {FUNDING_RATE}
+// - #strong[Inventory / Storage:] {INVENTORY_DATA}  // commodities only
+// ---- END CRYPTO / COMMODITY VARIANT ----
+//
 = Fundamental Picture
 == Positives
 // Revenue/earnings growth, margin expansion, strategic wins.

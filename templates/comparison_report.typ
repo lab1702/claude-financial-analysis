@@ -6,6 +6,30 @@
 // File naming: {SYM1}_vs_{SYM2}_{YYYY-MM-DD}.typ
 //   (3+ symbols: {SYM1}_vs_{SYM2}_vs_{SYM3}_{YYYY-MM-DD}.typ)
 // ============================================================
+//
+// Placeholder tokens used in this template (verify all are
+// replaced before compiling):
+//   {SYM1}                 — First symbol ticker
+//   {SYM2}                 — Second symbol ticker
+//   {Report Type}          — Asset-class label for header/title
+//   {YYYY-MM-DD}           — Report date (ISO format, header)
+//   {Month Day, Year}      — Report date (long format, title)
+//   {DATE}                 — Report date (disclaimer)
+//   {CATALYST_DESCRIPTION} — Per-symbol catalyst description
+//   {RISK_DESCRIPTION}     — Per-symbol risk description
+//   {OVERALL_PICK}         — Verdict: overall pick symbol
+//   {RATIONALE}            — Verdict rationale text
+// ============================================================
+//
+// Extending for 3+ symbols:
+//   - Add a column to every table() (columns: 4+ instead of 3)
+//   - Add a sentiment-badge() per extra symbol on the cover
+//   - Update the header text to include all symbols
+//     (e.g., "{SYM1} vs {SYM2} vs {SYM3}")
+//   - Add a grid() column for each extra symbol in side-by-side
+//     sections (Catalysts & Risks, Price Action)
+//   - Add {SYM3}, {SYM4}, etc. placeholder tokens as needed
+// ============================================================
 
 // — Page, font & heading setup —
 #set page(
@@ -13,7 +37,7 @@
   margin: (x: 1in, y: 1in),
   header: context {
     if counter(page).get().first() > 1 [
-      #text(size: 8pt, fill: luma(120))[{SYM1} vs {SYM2} Comparative Analysis — {YYYY-MM-DD}]
+      #text(size: 8pt, fill: luma(120))[{SYM1} vs {SYM2} {Report Type} — {YYYY-MM-DD}]
       #h(1fr)
       #text(size: 8pt, fill: luma(120))[Page #counter(page).display()]
     ]
@@ -36,7 +60,7 @@
 #align(center)[
   #text(size: 22pt, weight: "bold")[{SYM1} vs {SYM2}]
   #v(4pt)
-  #text(size: 11pt, fill: luma(80))[Comparative Analysis — {Month Day, Year}]
+  #text(size: 11pt, fill: luma(80))[{Report Type} Comparative Analysis — {Month Day, Year}]
   #v(4pt)
   // Replace with actual per-symbol sentiments and colors
   // (green = Bullish, red = Bearish, orange = Neutral)
@@ -90,6 +114,21 @@
     #text(weight: "bold")[{SYM2}]
     // Technical summary: MAs, RSI, support/resistance, volume.
   ],
+)
+
+== Relative Strength Comparison
+#figure(
+  table(
+    columns: 6,
+    align: (left, center, center, center, center, center),
+    stroke: 0.5pt + luma(200),
+    table.header[*Timeframe*][*{SYM1}*][*{SYM2}*][*SPY*][*{SYM1} vs SPY*][*{SYM2} vs SPY*],
+    [1 Week], [], [], [], [], [],
+    [1 Month], [], [], [], [], [],
+    [3 Months], [], [], [], [], [],
+    [YTD], [], [], [], [], [],
+  ),
+  caption: [Relative Strength Comparison],
 )
 
 // ============================================================
@@ -241,6 +280,21 @@
 = Data Quality Note
 // Note any data gaps, staleness, or source conflicts that differ between
 // the symbols (especially relevant for large-cap vs. small-cap comparisons).
+
+// Brief commentary on overall data quality for this comparison.
+
+#figure(
+  table(
+    columns: 3,
+    align: (left, center, center),
+    stroke: 0.5pt + luma(200),
+    table.header[*Data Point*][*{SYM1}*][*{SYM2}*],
+    [Data Freshness], [], [],
+    [Coverage Depth], [], [],
+    [Source Conflicts], [], [],
+  ),
+  caption: [Data Quality Comparison],
+)
 
 // ============================================================
 // Disclaimer & Sources
