@@ -290,6 +290,7 @@ Run the standard search queries (see Search Queries section) for each symbol in 
 9. **Data Quality Note** — Brief note on any data gaps, staleness, or source conflicts that differ between the symbols (especially relevant when comparing a well-covered large-cap against a thinly covered small-cap)
 
 ### Typst Report for Comparisons
+- Use the template at `templates/comparison_report.typ` (relative to the project root) as the starting point
 - File naming: `{SYM1}_vs_{SYM2}_{YYYY-MM-DD}.typ` (for 3+ symbols: `{SYM1}_vs_{SYM2}_vs_{SYM3}_{YYYY-MM-DD}.typ`)
 - Use side-by-side `grid()` layouts where practical
 - All comparison tables should use `table()` with one column per symbol

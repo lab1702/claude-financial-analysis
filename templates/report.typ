@@ -73,10 +73,10 @@
 // )[
 //   #text(weight: "bold", size: 11pt)[What Changed Since {Prior Date}]
 //   #v(4pt)
-//   - *Price:* {prior price} → {current price} ({+/- %})\
-//   - *Key developments:* {summary}\
-//   - *Prior scenarios:* {which played out}\
-//   - *Conviction:* {Higher/Lower/Unchanged} — {rationale}
+//   - #strong[Price:] {prior price} → {current price} ({+/- %})\
+//   - #strong[Key developments:] {summary}\
+//   - #strong[Prior scenarios:] {which played out}\
+//   - #strong[Conviction:] {Higher/Lower/Unchanged} — {rationale}
 // ]
 // #v(8pt)
 
@@ -116,6 +116,7 @@
 = Upcoming Catalysts
 // Earnings dates, product launches, conferences, regulatory decisions.
 
+// [ASSET-CLASS NOTE: Crypto/Commodities — skip this section. ETFs — add holdings, AUM, expense ratio, fund flows.]
 = Fundamental Picture
 == Positives
 // Revenue/earnings growth, margin expansion, strategic wins.
@@ -135,6 +136,7 @@
 == Management & Governance
 // CEO tenure, C-suite turnover, compensation alignment, governance flags.
 
+// [ASSET-CLASS NOTE: Crypto/Commodities — skip this section.]
 = Valuation & Peer Comparison
 == Valuation Multiples
 #figure(
@@ -166,12 +168,15 @@
 = Short Interest & Float Dynamics
 // Short interest, days to cover, squeeze potential.
 
+// [ASSET-CLASS NOTE: ETFs — skip unless heavily options-traded. Crypto/Commodities — skip.]
 = Options Activity
 // Put/call ratio, unusual flow, IV vs HV, max pain, GEX, IV term structure.
 
+// [ASSET-CLASS NOTE: ETFs — skip. Crypto/Commodities — skip.]
 = Insider & Institutional Activity
 // Insider buys/sells, 13F changes, activist involvement.
 
+// [ASSET-CLASS NOTE: Crypto/Commodities — skip this section.]
 = Analyst Consensus
 // Coverage count, rating distribution, price target range.
 
@@ -187,15 +192,15 @@
   columns: (1fr, 1fr, 1fr),
   gutter: 8pt,
   block(fill: green.lighten(90%), inset: 10pt, radius: 4pt)[
-    #text(weight: "bold")[Bull Case ({X}%)]
+    #text(weight: "bold")[Bull Case ({PROBABILITY}%)]
     // Triggers, price target range.
   ],
   block(fill: red.lighten(90%), inset: 10pt, radius: 4pt)[
-    #text(weight: "bold")[Bear Case ({X}%)]
+    #text(weight: "bold")[Bear Case ({PROBABILITY}%)]
     // Triggers, downside level.
   ],
   block(fill: orange.lighten(90%), inset: 10pt, radius: 4pt)[
-    #text(weight: "bold")[Base Case ({X}%)]
+    #text(weight: "bold")[Base Case ({PROBABILITY}%)]
     // Expected trading range.
   ],
 )
@@ -208,8 +213,8 @@
   radius: 4pt,
   width: 100%,
 )[
-  #text(weight: "bold")[Biggest Risk:] {risk} \
-  #text(weight: "bold")[Biggest Catalyst:] {catalyst}
+  #text(weight: "bold")[Biggest Risk:] {RISK_DESCRIPTION} \
+  #text(weight: "bold")[Biggest Catalyst:] {CATALYST_DESCRIPTION}
 ]
 
 = Trade Setup
@@ -221,13 +226,13 @@
   radius: 4pt,
   width: 100%,
 )[
-  #text(weight: "bold")[Directional Bias:] {Long/Short/Neutral} — {High/Moderate/Low} conviction \
-  #text(weight: "bold")[Entry Zone:] {price range} \
-  #text(weight: "bold")[Stop-Loss:] {level} ({rationale}) \
-  #text(weight: "bold")[Primary Target:] {target} #h(12pt) #text(weight: "bold")[Stretch Target:] {target} \
-  #text(weight: "bold")[Risk/Reward:] {X}:1 \
-  #text(weight: "bold")[Position Size:] {Full/Half/Starter} \
-  #text(weight: "bold")[Timeframe:] {days/weeks/months}
+  #text(weight: "bold")[Directional Bias:] {DIRECTIONAL_BIAS} — {CONVICTION_LEVEL} conviction \
+  #text(weight: "bold")[Entry Zone:] {ENTRY_PRICE_RANGE} \
+  #text(weight: "bold")[Stop-Loss:] {STOP_LEVEL} ({STOP_RATIONALE}) \
+  #text(weight: "bold")[Primary Target:] {PRIMARY_TARGET} #h(12pt) #text(weight: "bold")[Stretch Target:] {STRETCH_TARGET} \
+  #text(weight: "bold")[Risk/Reward:] {RATIO}:1 \
+  #text(weight: "bold")[Position Size:] {POSITION_SIZE} \
+  #text(weight: "bold")[Timeframe:] {TIMEFRAME}
 ]
 
 = Relative Strength Dashboard
@@ -259,9 +264,9 @@
 #line(length: 100%, stroke: 0.5pt + luma(200))
 #v(4pt)
 #text(size: 8pt, fill: luma(120))[
-  _This is informational analysis only, not financial advice.
+  #emph[This is informational analysis only, not financial advice.
   All data sourced from publicly available information as of {date}.
-  Figures may be delayed or subject to revision._
+  Figures may be delayed or subject to revision.]
 ]
 
 #heading(numbering: none)[Sources]

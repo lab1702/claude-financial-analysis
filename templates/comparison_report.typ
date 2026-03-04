@@ -21,6 +21,7 @@
 )
 #set text(size: 10pt)
 #set par(justify: true, leading: 0.65em)
+// Flat numbering — comparative reports have no sub-sections
 #set heading(numbering: "1.")
 
 // — Helper: colored sentiment badge —
@@ -36,6 +37,12 @@
   #text(size: 22pt, weight: "bold")[{SYM1} vs {SYM2}]
   #v(4pt)
   #text(size: 11pt, fill: luma(80))[Comparative Analysis — {Month Day, Year}]
+  #v(4pt)
+  // Replace with actual per-symbol sentiments and colors
+  // (green = Bullish, red = Bearish, orange = Neutral)
+  #sentiment-badge("{SYM1}: Bullish", green)
+  #h(6pt)
+  #sentiment-badge("{SYM2}: Bearish", red)
   #v(6pt)
   #line(length: 60%, stroke: 0.5pt + luma(200))
 ]
@@ -240,9 +247,9 @@
 #line(length: 100%, stroke: 0.5pt + luma(200))
 #v(4pt)
 #text(size: 8pt, fill: luma(120))[
-  _This is informational analysis only, not financial advice.
+  #emph[This is informational analysis only, not financial advice.
   All data sourced from publicly available information as of {date}.
-  Figures may be delayed or subject to revision._
+  Figures may be delayed or subject to revision.]
 ]
 
 #heading(numbering: none)[Sources]
