@@ -86,8 +86,13 @@ Include a **Confidence** tag after the sentiment:
 - Identify significant moves in the last 1-2 weeks and what drove them (earnings, news, macro events)
 - Note any notable intraday or multi-day trends
 
+> **Market Hours & Data Staleness:**
+> - When markets are closed (weekends, holidays, after hours), note that prices are "as of market close" with the date. Do not present Friday's close as a live price on Saturday.
+> - If significant pre-market or after-hours moves have occurred (e.g., earnings released after close), note them separately from the regular-session close.
+> - For international equities trading in different time zones, note the local market status and the most recent session's close.
+
 #### Earnings Reaction History
-How the stock moved after each of the last 4 earnings reports (beat/miss and resulting % move), to contextualize any upcoming report.
+Summarize the last 4 earnings reports in a table with columns: Quarter, EPS, Revenue, YoY Growth, and Stock Move (post-earnings % change). Note beats/misses in the EPS and Revenue cells.
 
 ### 3. Technical Snapshot
 
@@ -213,7 +218,7 @@ How the stock moved after each of the last 4 earnings reports (beat/miss and res
 Provide three scenarios with probability weightings that sum to 100%:
 - **Bull case (assign %):** What goes right, key triggers that would confirm it, price target range
 - **Bear case (assign %):** What goes wrong, key triggers that would confirm it, downside level
-- **Most likely scenario (assign %):** Balanced assessment with expected trading range
+- **Base case (assign %):** Balanced assessment with expected trading range
 
 Flag the single biggest risk and the single biggest catalyst.
 
@@ -257,12 +262,6 @@ Present a compact table showing the stock's performance vs. benchmarks:
 - **Bid-ask spread:** Note if the stock is thinly traded or has wide spreads (common in small/micro-caps)
 - **Options liquidity:** Whether options chains have tight spreads and sufficient open interest for practical trading (this directly affects the usefulness of Section 9)
 - If the stock is a mega- or large-cap with deep liquidity, keep this section brief — it mainly matters for mid-caps and below
-
-### Market Hours & Data Staleness
-
-- When markets are closed (weekends, holidays, after hours), note that prices are "as of market close" with the date. Do not present Friday's close as a live price on Saturday.
-- If significant pre-market or after-hours moves have occurred (e.g., earnings released after close), note them separately from the regular-session close.
-- For international equities trading in different time zones, note the local market status and the most recent session's close.
 
 ---
 

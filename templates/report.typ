@@ -38,12 +38,13 @@
   #v(4pt)
   #text(size: 11pt, fill: luma(80))[{Report Type} Report — {Month Day, Year}]
   #v(4pt)
-  // Use sentiment-badge with the appropriate color:
-  //   green for Bullish, red for Bearish, orange for Neutral
-  #sentiment-badge("{Bullish/Bearish/Neutral}", {green/red/orange})
+  // Replace "Bullish" and green with actual sentiment and color
+  // (green = Bullish, red = Bearish, orange = Neutral)
+  #sentiment-badge("Bullish", green)
   #h(6pt)
-  // Confidence badge: green for High, orange for Medium, red for Low
-  #sentiment-badge("Confidence: {High/Medium/Low}", {green/orange/red})
+  // Replace "High" and green with actual confidence and color
+  // (green = High, orange = Medium, red = Low)
+  #sentiment-badge("Confidence: High", green)
   #v(6pt)
   #line(length: 60%, stroke: 0.5pt + luma(200))
 ]
@@ -136,10 +137,28 @@
 
 = Valuation & Peer Comparison
 == Valuation Multiples
-// P/E, P/S, EV/EBITDA, PEG vs. 5-year historical averages.
+#figure(
+  table(
+    columns: 4,
+    align: (left, center, center, center),
+    stroke: 0.5pt + luma(200),
+    table.header[*Metric*][*Current*][*5Y Avg*][*vs. History*],
+    // ...rows for P/E, P/S, EV/EBITDA, PEG...
+  ),
+  caption: [Valuation Multiples vs. Historical Averages],
+)
 
 == Peer Benchmarking
-// Use table() for peer comparison grid.
+#figure(
+  table(
+    columns: 6,
+    align: (left, center, center, center, center, center),
+    stroke: 0.5pt + luma(200),
+    table.header[*Company*][*Rev Growth*][*Margins*][*P/E*][*EV/EBITDA*][*P/S*],
+    // ...rows for each peer...
+  ),
+  caption: [Peer Benchmarking],
+)
 
 = Dividends & Capital Returns
 // Yield, payout ratio, dividend growth, buybacks.
