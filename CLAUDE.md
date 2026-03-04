@@ -364,7 +364,7 @@ After the analysis is complete, write a professionally formatted Typst file to d
 3. Re-compile and repeat until the build succeeds
 4. After successful compilation, check for missed placeholder replacements:
    ```
-   grep -n '{[A-Z_]*}' {file}.typ
+   grep -nP '\{[A-Z][A-Za-z0-9_, -]*\}' {file}.typ
    ```
    If any remain, they are missed replacements — fix them and recompile.
 5. Report both the `.typ` and `.pdf` file paths to the user

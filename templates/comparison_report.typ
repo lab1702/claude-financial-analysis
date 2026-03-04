@@ -45,7 +45,7 @@
 )
 #set text(size: 10pt)
 #set par(justify: true, leading: 0.65em)
-// Flat numbering — comparative reports have no sub-sections
+// Flat top-level numbering — sub-sections used sparingly for table grouping
 #set heading(numbering: "1.")
 
 // — Helper: colored sentiment badge —

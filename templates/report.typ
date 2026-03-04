@@ -32,6 +32,20 @@
 //   {TIMEFRAME}            — Trade timeframe
 //   {Sector ETF}           — Sector ETF ticker (e.g., XLK)
 //   {Prior Date}           — Date of prior report (delta only)
+//
+// ETF variant tokens (used only when ETF scaffolding is active):
+//   {EXPENSE_RATIO}        — Fund expense ratio
+//   {AUM}                  — Assets under management
+//   {FUND_FLOWS}           — 30-day fund flows
+//   {TRACKING_ERROR}       — Tracking error vs benchmark
+//
+// Crypto/Commodity variant tokens (used only when crypto scaffolding is active):
+//   {ON_CHAIN_SUMMARY}     — On-chain metrics summary
+//   {SUPPLY_SCHEDULE}      — Supply schedule / dynamics
+//   {NETWORK_STATS}        — Hash rate / network stats
+//   {FUTURES_OI}           — Futures open interest
+//   {FUNDING_RATE}         — Funding rate
+//   {INVENTORY_DATA}       — Inventory / storage data (commodities)
 // ============================================================
 
 // — Page, font & heading setup —
